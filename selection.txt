@@ -1,0 +1,420 @@
+--------------------------------------
+Selection of variables for clustering
+--------------------------------------
+
+In total, Ethnographic Atlas contains: 1267 societies and 156 variables
+
+EA contains following variables:
+-------------------------------
+1) Identification of society -- unusable
+code inea1 eanumber navn eareg
+
+2) Cultural variables -- usable
+v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19 v20 v21 v22
+v23 v24 v25 v26 v27 v28 v29 v30 v31 v32 v33 v34 v35 v36 v37 v38 v39 v40 v41 v42
+v43 v44 v45 v46 v47 v48 v49 v50 v51 v52 v53 v54 v55 v56 v57 v58 v59 v60 v61 v62
+v63 v64 v65 v66 v67 v68 v69 v70 v71 v72 v73 v74 v75 v76 v77 v78 v79 v80 v81 v82
+v83 v84 v85 v86 v87 v88 v89 v90 v91 v92 v93 v94 v95 v96 v97 v98 v99 v102 v104
+v106 v107 v112 v113 v114
+
+3) Other identification of society, language -- mostly unusable
+iso639.3 lang phyl reg meanalt sdalt bio.1 bio.2 bio.3 bio.4 bio.5 bio.6 bio.7
+bio.8 bio.9 bio.10 bio.11 bio.12 bio.13 bio.14 bio.15 bio.16 bio.17 bio.18
+bio.19 mnnpp long lati ecoregion mht.name koeppengei society continent region
+iso name.0 name.1 hasc.1 name.2 hasc.2 name.3 eaid lrbid sccsid wnaiid
+
+######################
+#Cultural variables: #
+######################
+Following thing needs to be decided:
+a) categorical or ordinal (c or o)
+b) similarity to other variables
+c) other comments
+
+v1: Gathering -- o
+v2: Hunting -- o
+v3: Fishing -- o
+v4: Animal Husbandry -- o
+v5: Agriculture -- o
+------------------------------
+v1-v5 seems to fully characterize type of subsistence
+
+v6: Mode of Marriage (Primary) -- c
+v7: Mode of Marriage (Alternate) -- c -- i.e., dowry, bride-price...
+v8: Domestic Organization --  c -- type of family
+v9: Marital Composition: Monogamy and Polygamy -- c
+
+v10: Marital Residence with Kin: First Years -- c
+v11: Transfer of Residence at Marriage: After First Years -- c
+v12: Marital Residence with Kin: After First Years -- c
+v13: Marital Residence with Kin: Alternate Form -- c
+v14: Transfer of Residence at Marriage: Alternate Form --  c
+--------------------------------------
+v10-v14 all code a relatively similar thing from slightly different angles
+
+v15: Community Marriage Organization -- c
+v16: Community Marriage Organization (clans) -- c
+-------------------------------------------------
+v16 provides a details for one point of v15
+
+v17: Largest Patrilineal Kin Group -- c
+v18: Largest Patrilineal Exogamous Group (If Different from Variable v17)
+v19: Largest Matrilineal Kin Group -- c
+v20: Largest Matrilineal Exogamous Group (If Different from Variable v19) -- c
+v21: Largest Matrilineal Kin Group -- c
+-------------------------------------------------
+v17-v21 code very similar thing and I have a little idea what.
+
+v22: Secondary Cognatic Kin Group: Kindreds and Ramages -- c
+--------------------------------------------------
+related to v17-v21?
+
+v23: Cousin Marriages (Allowed) -- c
+v24: Subtypes of Cousin Marriages -- c
+v25: Preferred rather than just Permitted Cousin Marriages -- c
+v26: Subtypes of Cousin Marriages (Preferred rather than just Permitted) -- c
+--------------------------------------------------
+v23-v26 all code cousin marriages and their relationship
+
+v27: Kin Terms for Cousins -- c
+---------------------------------------------
+Related, but probably do not hold the same information as v23-26
+
+
+v28: Intensity of Agriculture -- c, possibly o
+v29: Major Crop Type -- c
+---------------------------------------------
+partially related to v1-v5
+
+v30: Settlement Patterns -- c, possibly o
+v31: Mean Size of Local Communities -- o
+v32: Jurisdictional Hierarchy of Local Community -- c, possibly o if ordered differently?
+v33: Jurisdictional Hierarchy Beyond Local Community -- o
+v34: High Gods -- c, possibly o
+v35: Games -- c, but there are subcategories...
+v36: Post-partum Sex Taboos -- o
+v37: Male Genital Mutilations -- c, but o except single variable
+v38: Segregation of Adolescent Boys -- c, what does "peers" mean?
+v39: Animals and Plow Cultivation -- c
+v40: Predominant Type of Animal Husbandry -- c
+v41: Milking of Domestic Animals -- o
+v42: Subsistence Economy (Not in the original EA) -- c
+
+v43: Descent: Major Type (From Variables 17, 19, 21, Not in the Original EA) -- c
+----------------------------------------------------------------------------
+Derived from v17-v21
+
+v44: Sex Differences: Metal Working -- c
+v45: Sex Differences: Weaving -- c
+v46: Sex Differences: Leather Working -- c
+v47: Sex Differences: Pottery Making -- c
+v48: Sex Differences: Boat Building -- c
+v49: Sex Differences: House Construction -- c
+v50: Sex Differences: Gathering -- c
+v51: Sex Differences: Hunting -- c
+v52: Sex Differences: Fishing -- c
+v53: Sex Differences: Animal Husbandry -- c
+v54: Sex Differences: Agriculture -- c
+----------------------------------------------------------------------------
+All of these could be restructured into ordinary variables.
+
+v55: Age or Occupational Specialization: Metal Working -- c
+v56: Age or Occupational Specialization: Weaving -- c
+v57: Age or Occupational Specialization: Leather Working -- c
+v58: Age or Occupational Specialization: Pottery Making -- c
+v59: Age or Occupational Specialization: Boat Building -- c
+v60: Age or Occupational Specialization: House Construction -- c
+v61: Age or Occupational Specialization: Gathering -- c
+v62: Age or Occupational Specialization: Hunting -- c
+v63: Age or Occupational Specialization: Fishing -- c
+v64: Age or Occupational Specialization: Animal Husbandry -- c
+v65: Age or Occupational Specialization: Agriculture -- c
+
+v66: Class Stratification -- c
+v67: Class Stratification, Secondary Features -- c
+v68: Class Stratification (Endogamy) -- c
+v69: Class Stratification (Endogamy), Secondary Type -- c
+--------------------------------------------------------
+I understand class stratification, but what is class stratification (endogamy)? v66-v69 related
+
+v70: Type of Slavery -- c
+v71: Former Presence of Slavery -- c, if changes made, o
+--------------------------------------------------------
+v71 is a weird variable detailing v70 in a weird way. It should be remade.
+  # new v71 Former presence of slavery:
+  # a) Absent
+  # b) Formerly present, but not currently existing
+  # c) Exist currently and in past
+
+v72: Succession to the Office of Local Headman -- c
+v73: Succession to the Office of Local Headman: Type of Hereditary Succession -- c
+----------------------------------------------------------------------------
+v72-v73 related; v72's 1 and 2 is detailed in v73
+
+v74: Inheritance Rule for Real Property (Land) -- c
+v75: Inheritance Distribution for Real Property (Land) -- c
+v76: Inheritance Rule for Movable Property -- c
+v77: Inheritance Distribution for Movable Property -- c
+---------------------------------------------------------------------------
+v74-v77 inheritance related variables
+
+v78: Norms of Premarital Sexual Behavior of Girls -- c
+
+v79: Prevailing Type of Dwelling: Ground Plan -- c
+v80: Prevailing Type of Dwelling: Floor Level -- c
+v81: Prevailing Type of Dwelling: Wall Material -- c
+v82: Prevailing Type of Dwelling: Shape of Roof -- c
+v83: Prevailing Type of Dwelling: Roofing Materials -- c
+v84: Secondary or Alternative House Type: Ground Plan -- c
+v85: Secondary or Alternative House Type: Floor Level -- c
+v86: Secondary or Alternative House Type: Wall Material -- c
+v87: Secondary or Alternative House Type: Shape of Roof -- c
+v88: Secondary or Alternative House Type: Roofing Materials -- c
+-----------------------------------------------------------
+v79--v88 type of house
+
+v89: Inclusion in Summary Atlas Volume (1967) -- useless
+v90: Political Integration (WES Column 15) -- useless
+v91: Region -- useless
+v92: Area within each region -- useless?
+v93: Ethnographic Atlas Number -- useless
+v94: Political Succession for the Local Community (WES Column 15) -- c
+v95: Climate: Primary Environment (Coded by Frank Moore from Phillips Comparative Atlas) -- c
+v96: Climate: Secondary Environments (Coded by Frank Moore from Phillips Comparative Atlas) -- c
+
+v97: Linguistic Affiliation: Language Continent -- c
+v98: Linguistic Affiliation: Language Phylum -- c
+v99: Linguistic Affiliation: Subfamilies -- c
+-----------------------------------------------------------------
+v97-99 are related and could be used to simulate the effect of phylogenetic relationship
+
+v102: Date: Year with Century -- useless
+v104: Latitude -- useless, unless distance is taken in account somehow
+v106: Longitude -- useless, unless distance is taken in account, somehow
+v107: Society name -- useless
+v112: Trance States -- c
+v113: Societal Rigidity -- c
+v114: Ethnographic Atlas Cluster number -- useless
+################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###############
+# Categories: #
+###############
+-----------------------------------------------------------
+-- useless:
+-----------------------------------------------------------
+    v89: Inclusion in Summary Atlas Volume (1967) -- useless
+    v93: Ethnographic Atlas Number -- useless
+    v102: Date: Year with Century -- useless
+    v107: Society name -- useless.v114: Ethnographic Atlas Cluster number -- useless
+
+
+-----------------------------------------------------------
+-- Subsistence:
+-----------------------------------------------------------
+    v1: Gathering -- o
+    v2: Hunting -- o
+    v3: Fishing -- o
+    v4: Animal Husbandry -- o
+    v5: Agriculture -- o
+    v28: Intensity of Agriculture -- c, possibly o
+    v29: Major Crop Type -- c
+    v39: Animals and Plow Cultivation -- c
+    v40: Predominant Type of Animal Husbandry -- c
+    v41: Milking of Domestic Animals -- o
+    v42: Subsistence Economy (Not in the original EA) -- c
+
+
+-----------------------------------------------------------
+-- Sex differences:
+-----------------------------------------------------------
+    v44: Sex Differences: Metal Working -- c
+    v45: Sex Differences: Weaving -- c
+    v46: Sex Differences: Leather Working -- c
+    v47: Sex Differences: Pottery Making -- c
+    v48: Sex Differences: Boat Building -- c
+    v49: Sex Differences: House Construction -- c
+    v50: Sex Differences: Gathering -- c
+    v51: Sex Differences: Hunting -- c
+    v52: Sex Differences: Fishing -- c
+    v53: Sex Differences: Animal Husbandry -- c
+    v54: Sex Differences: Agriculture -- c
+
+
+-----------------------------------------------------------
+-- Housing:
+-----------------------------------------------------------
+    v79: Prevailing Type of Dwelling: Ground Plan -- c
+    v80: Prevailing Type of Dwelling: Floor Level -- c
+    v81: Prevailing Type of Dwelling: Wall Material -- c
+    v82: Prevailing Type of Dwelling: Shape of Roof -- c
+    v83: Prevailing Type of Dwelling: Roofing Materials -- c
+    v84: Secondary or Alternative House Type: Ground Plan -- c
+    v85: Secondary or Alternative House Type: Floor Level -- c
+    v86: Secondary or Alternative House Type: Wall Material -- c
+    v87: Secondary or Alternative House Type: Shape of Roof -- c
+    v88: Secondary or Alternative House Type: Roofing Materials -- c
+
+
+-----------------------------------------------------------
+-- Descent:
+-----------------------------------------------------------
+    v17: Largest Patrilineal Kin Group -- c
+    v18: Largest Patrilineal Exogamous Group (If Different from Variable v17)
+    v19: Largest Matrilineal Kin Group -- c
+    v20: Largest Matrilineal Exogamous Group (If Different from Variable v19) -- c
+    v21: Largest Matrilineal Kin Group -- c
+    v22: Secondary Cognatic Kin Group: Kindreds and Ramages -- c
+    v27: Kin Terms for Cousins -- c
+    v43: Descent: Major Type (From Variables 17, 19, 21, Not in the Original EA) -- c
+
+
+
+-----------------------------------------------------------
+-- Marriage:
+-----------------------------------------------------------
+    v6: Mode of Marriage (Primary) -- c
+    v7: Mode of Marriage (Alternate) -- c -- i.e., dowry, bride-price...
+    v8: Domestic Organization --  c -- type of family
+    v9: Marital Composition: Monogamy and Polygamy -- c
+  PMR
+    v10: Marital Residence with Kin: First Years -- c
+    v11: Transfer of Residence at Marriage: After First Years -- c
+    v12: Marital Residence with Kin: After First Years -- c
+    v13: Marital Residence with Kin: Alternate Form -- c
+    v14: Transfer of Residence at Marriage: Alternate Form --  c
+  Community organization
+    v15: Community Marriage Organization -- c
+    v16: Community Marriage Organization (clans) -- c
+  cousin marriages
+    v23: Cousin Marriages (Allowed) -- c
+    v24: Subtypes of Cousin Marriages -- c
+    v25: Preferred rather than just Permitted Cousin Marriages -- c
+    v26: Subtypes of Cousin Marriages (Preferred rather than just Permitted) -- c
+
+
+-----------------------------------------------------------
+-- Linguistic affiliation:
+-----------------------------------------------------------
+    v97: Linguistic Affiliation: Language Continent -- c
+    v98: Linguistic Affiliation: Language Phylum -- c
+    v99: Linguistic Affiliation: Subfamilies -- c
+
+
+-----------------------------------------------------------
+-- Geographical area:
+-----------------------------------------------------------
+    v91: Region -- continent and their parts
+    v92: Area within each region -- would need a significant recoding (same code can code different area dependent on region)
+    v104: Latitude -- lat and lon needs to be calculated in eculidean distance
+    v106: Longitude -- lat and lon needs to be calculated in eculidean distance
+
+
+-----------------------------------------------------------
+-- Climate:
+-----------------------------------------------------------
+    v95: Climate: Primary Environment (Coded by Frank Moore from Phillips Comparative Atlas) -- c
+    v96: Climate: Secondary Environments (Coded by Frank Moore from Phillips Comparative Atlas) -- c
+
+
+-----------------------------------------------------------
+-- Age and occupational specialization:
+-----------------------------------------------------------
+    v55: Age or Occupational Specialization: Metal Working -- c
+    v56: Age or Occupational Specialization: Weaving -- c
+    v57: Age or Occupational Specialization: Leather Working -- c
+    v58: Age or Occupational Specialization: Pottery Making -- c
+    v59: Age or Occupational Specialization: Boat Building -- c
+    v60: Age or Occupational Specialization: House Construction -- c
+    v61: Age or Occupational Specialization: Gathering -- c
+    v62: Age or Occupational Specialization: Hunting -- c
+    v63: Age or Occupational Specialization: Fishing -- c
+    v64: Age or Occupational Specialization: Animal Husbandry -- c
+    v65: Age or Occupational Specialization: Agriculture -- c
+
+
+-----------------------------------------------------------
+-- Class stratification and slavery
+-----------------------------------------------------------
+    v66: Class Stratification -- c
+    v67: Class Stratification, Secondary Features -- c
+    v68: Class Stratification (Endogamy) -- c
+    v69: Class Stratification (Endogamy), Secondary Type -- c
+    v70: Type of Slavery -- c
+    v71: Former Presence of Slavery -- c, if changes made, o
+          #v71 is a weird variable detailing v70 in a weird way. It should be remade.
+          # new v71 Former presence of slavery:
+          # a) Absent
+          # b) Formerly present, but not currently existing
+          # c) Exist currently and in past
+
+
+-----------------------------------------------------------
+-- Settlement and size
+-----------------------------------------------------------
+    v30: Settlement Patterns -- c, possibly o
+    v31: Mean Size of Local Communities -- o
+
+
+-----------------------------------------------------------
+-- Belief and religion
+-----------------------------------------------------------
+    v34: High Gods -- c, possibly o
+    v112: Trance States -- c
+
+
+-----------------------------------------------------------
+-- Political organization
+-----------------------------------------------------------
+    v32: Jurisdictional Hierarchy of Local Community -- c, possibly o if ordered differently?
+    v33: Jurisdictional Hierarchy Beyond Local Community -- o
+    v72: Succession to the Office of Local Headman -- c
+    v73: Succession to the Office of Local Headman: Type of Hereditary Succession -- c
+    v90: Political Integration (WES Column 15) -- c
+    v94: Political Succession for the Local Community (WES Column 15) -- c
+
+
+-----------------------------------------------------------
+-- Inheritance of property
+-----------------------------------------------------------
+    v74: Inheritance Rule for Real Property (Land) -- c
+    v75: Inheritance Distribution for Real Property (Land) -- c
+    v76: Inheritance Rule for Movable Property -- c
+    v77: Inheritance Distribution for Movable Property -- c
+
+
+-----------------------------------------------------------
+-- Sex related taboos and traditions
+-----------------------------------------------------------
+    v36: Post-partum Sex Taboos -- o
+    v37: Male Genital Mutilations -- c, but o except single variable
+    v38: Segregation of Adolescent Boys -- c, what does "peers" mean?
+    v78: Norms of Premarital Sexual Behavior of Girls -- c
+
+
+-----------------------------------------------------------
+-- Other
+-----------------------------------------------------------
+    v35: Games -- c, but there are subcategories...
+    v113: Societal Rigidity -- c
