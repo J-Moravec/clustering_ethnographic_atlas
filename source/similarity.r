@@ -1,6 +1,22 @@
 library("Rcpp")
-Rcpp::sourceCpp("cluster_functions.cpp")
+Rcpp::sourceCpp("similarity.cpp")
 
+
+similarity_matrix = function(x){
+    names = rownames(x)
+    y = as.matrix(x)
+    mode(y) = "integer"
+    y = cpp_similarity_matrix(y)
+    rownames(y) = names
+    colnames(y) = names
+    return(y)
+    }
+
+################################################################################
+# Original R code:
+# -- very slow, running time almost an hour
+# -- new C++ code completes the same task in two seconds
+################################################################################
 #similarity = function(x, y){
 #    if( is.na(x) || is.na(y) ){
 #        return(NA)
@@ -46,15 +62,3 @@ Rcpp::sourceCpp("cluster_functions.cpp")
 #        }
 #    return(mat)
 #    }
-
-
-distance_matrix = function(x){
-    names = rownames(x)
-    matrix = as.matrix(x)
-    mode(matrix) = "integer"
-    
-    similarity = cpp_similarity_matrix(matrix)
-    distance = 1 - similarity
-    rownames(distance) = names
-    colnames(distance) = names
-    }
