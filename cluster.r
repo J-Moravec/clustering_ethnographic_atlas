@@ -14,7 +14,7 @@ similarity = module("source/similarity.r")
 
 clustering = module("source/clustering.r")
 
-#plotting = module("source/plotting.r")
+plotting = module("source/plotting.r")
 
 
 
@@ -36,6 +36,5 @@ distance_matrix = 1 - similarity_matrix
 cluster = clustering$cluster(distance_matrix)
 
 # Plotting:
-
-
-## vector of residences
+residences = EA$v12
+plotting$plot_png(cluster, residences)
