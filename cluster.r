@@ -82,6 +82,20 @@ plotting$plot_png(
     )
 
 
+plotting$plot_png(
+    filename = "tree_k47.png",
+    width = 1024,
+    height = 1024,
+    plot_fun = plotting$plot_collapsed,
+    # arguments for plot_collapsed
+    clustered = clustered,
+    k = 47,
+    residences = residences,
+    offset = 3,
+    piecex = 1
+    )
+
+
 purity_max_threshold = clustering$overall_purity(
     clustered, residences, 300, funct_purity=clustering$purity_max_threshold
     )

@@ -96,7 +96,7 @@ plot_tree = function(clustered, residences){
     }
 
 
-plot_collapsed = function(clustered, k, residences, offset=2.5){
+plot_collapsed = function(clustered, k, residences, offset=2.5, piecex=2){
     clusters = clustering$get_clusters(clustered, k)
     res_freq_table = clustering$clusters_res_freq_table(clusters, residences)
     collapsed_tree = clustering$collapse_tree(clustered, clusters)
@@ -110,7 +110,7 @@ plot_collapsed = function(clustered, k, residences, offset=2.5){
     new_xlim = max_label_width + current_xlim + .offset
     new_ylim = current_ylim + c(-1,1)*strwidth("m") * 4
     .plot_phylo_collapsed(collapsed_tree, TRUE, .offset, show=TRUE, xlim=new_xlim, ylim=new_ylim)
-    tiplabels(pie=res_freq_table, piecol=res_freq_colors, cex=2)
+    tiplabels(pie=res_freq_table, piecol=res_freq_colors, cex=piecex)
 
     legend = names(residence_colors)
     legend_colors = residence_colors
