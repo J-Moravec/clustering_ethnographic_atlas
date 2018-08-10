@@ -12,6 +12,9 @@ plotting = module("source/plotting.r")
 
 residence = module("source/residence.r")
 
+purity = module("source/purity.r")
+
+
 # Ethnographic atlas is in variable EA
 
 load("data/EA.Rdata")
@@ -32,7 +35,7 @@ clustered = clustering$cluster(distance_matrix)
 # Plotting:
 residences = residence$get_residences(EA)
 plotting$plot_png(
-    filename = "cluster.png",
+    filename = "figures/cluster.png",
     width = 1024,
     height = 10240,
     plot_fun = plotting$plot_tree,
@@ -42,130 +45,103 @@ plotting$plot_png(
     )
 
 
-# calculating overall purity with several purity functions
-purity_max_mean = clustering$overall_purity(clustered, residences, 300)
 
-plotting$plot_png(
-    filename = "purity_max_mean.png",
-    width = 1024,
-    height = 1024,
-    plot_fun = plotting$plot_purity,
-    # arguments for plot_purity
-    purity = purity_max_mean
-    )    
+# number of societies in total:
+n_societies = nrow(fEA)
 
+# how many clusters should be taken at maximum
+kmax = 300
 
-
-plotting$plot_png(
-    filename = "tree_k2.png",
-    width = 1024,
-    height = 1024,
-    plot_fun = plotting$plot_collapsed,
-    # arguments for plot_collapsed
-    clustered = clustered,
-    k = 2,
-    residences = residences,
-    offset = 5
+# purity_max_mean
+# range: 0 to 1
+# maximum is best
+purity_max_mean = purity$overall_purity(
+    clustered, residences, kmax, funct_purity=purity$purity_max_mean
+    )
+purity$plot_purity(purity_max_mean, "figures/purity_max_mean.png")
+purity$plot_penalized(
+    purity_max_mean, "purity_max_mean_pen", b=-1, n=n_societies
     )
 
 
-plotting$plot_png(
-    filename = "tree_k15.png",
-    width = 1024,
-    height = 1024,
-    plot_fun = plotting$plot_collapsed,
-    # arguments for plot_collapsed
-    clustered = clustered,
-    k = 15,
-    residences = residences,
-    offset = 5
+# purity_max_threshold
+# range: 0 to 1
+# maximum is best
+purity_max_threshold = purity$overall_purity(
+    clustered, residences, kmax, funct_purity=purity$purity_max_threshold
+    )
+purity$plot_purity(purity_max_threshold, "figures/purity_max_threshold.png")
+purity$plot_penalized(
+    purity_max_threshold, "purity_max_threshold_pen", b=-1, n=n_societies
+    )
+
+# purity_entropy
+# range: 0 to 2.321928
+# range: 0 to -log2(1/m)
+# m = 5 (4 residences + NA)
+# minimum is best
+m = length(unique(residences))
+entropy_max = -log2(1/m)
+purity_entropy = purity$overall_purity(
+    clustered, residences, kmax, funct_purity=purity$purity_entropy
+    )
+purity$plot_purity(purity_entropy, "figures/purity_entropy.png")
+purity$plot_penalized(
+    purity_entropy, "purity_entropy_pen", b=entropy_max, n=n_societies
     )
 
 
-plotting$plot_png(
-    filename = "tree_k47.png",
-    width = 1024,
-    height = 1024,
-    plot_fun = plotting$plot_collapsed,
-    # arguments for plot_collapsed
-    clustered = clustered,
-    k = 47,
-    residences = residences,
-    offset = 3,
-    piecex = 1
+# purity_gini (gini-simpson)
+# range: 0 to 4/5
+# range: 0 to 1-1/m
+# m = 5 (4 residences + NA
+# minimum is best
+m = length(unique(residences))
+gini_max = 1-1/m
+purity_gini = purity$overall_purity(
+    clustered, residences, kmax, funct_purity=purity$purity_gini
+    )
+purity$plot_purity(purity_gini, "figures/purity_gini.png")
+purity$plot_penalized(
+    purity_gini, "purity_gini_pen", b=gini_max, n=n_societies
     )
 
 
-purity_max_threshold = clustering$overall_purity(
-    clustered, residences, 300, funct_purity=clustering$purity_max_threshold
-    )
-
-purity_max_threshold_penal_lin = purity_max_threshold - 1:300
-purity_max_threshold_penal_perc = purity_max_threshold/1:300
-
-plotting$plot_png(
-    filename = "purity_max_threshold.png",
-    width = 1024,
-    height = 1024,
-    plot_fun = plotting$plot_purity,
-    # arguments for plot_purity
-    purity = purity_max_threshold
-    )    
+#plotting$plot_png(
+#    filename = "tree_k2.png",
+#    width = 1024,
+#    height = 1024,
+#    plot_fun = plotting$plot_collapsed,
+#    # arguments for plot_collapsed
+#    clustered = clustered,
+#    k = 2,
+#    residences = residences,
+#    offset = 5
+#    )
 
 
-plotting$plot_png(
-    filename = "purity_max_threshold_penal_lin.png",
-    width = 1024,
-    height = 1024,
-    plot_fun = plotting$plot_purity,
-    # arguments for plot_purity
-    purity = purity_max_threshold_penal_lin
-    )    
+#plotting$plot_png(
+#    filename = "tree_k15.png",
+#    width = 1024,
+#    height = 1024,
+#    plot_fun = plotting$plot_collapsed,
+#    # arguments for plot_collapsed
+#    clustered = clustered,
+#    k = 15,
+#    residences = residences,
+#    offset = 5
+#    )
 
 
-
-plotting$plot_png(
-    filename = "purity_max_threshold_penal_perc.png",
-    width = 1024,
-    height = 1024,
-    plot_fun = plotting$plot_purity,
-    # arguments for plot_purity
-    purity = purity_max_threshold_penal_perc
-    )    
-
-
-purity_entropy_sum = clustering$overall_purity(
-    clustered, residences, 300, funct_purity=clustering$purity_entropy_sum
-    )
-
-purity_entropy_sum_penal_lin = purity_entropy_sum - 1:300
-purity_entropy_sum_penal_avg = purity_entropy_sum/1:300
-
-plotting$plot_png(
-    filename = "purity_entropy_sum.png",
-    width = 1024,
-    height = 1024,
-    plot_fun = plotting$plot_purity,
-    # arguments for plot_purity
-    purity = purity_entropy_sum
-    )
-
-
-plotting$plot_png(
-    filename = "purity_entropy_sum_penal_lin.png",
-    width = 1024,
-    height = 1024,
-    plot_fun = plotting$plot_purity,
-    # arguments for plot_purity
-    purity = purity_entropy_sum_penal_lin
-    )    
-
-
-plotting$plot_png(
-    filename = "purity_entropy_sum_penal_avg.png",
-    width = 1024,
-    height = 1024,
-    plot_fun = plotting$plot_purity,
-    # arguments for plot_purity
-    purity = purity_entropy_sum_penal_avg
-    )    
+#plotting$plot_png(
+#    filename = "tree_k47.png",
+#    width = 1024,
+#    height = 1024,
+#    plot_fun = plotting$plot_collapsed,
+#    # arguments for plot_collapsed
+#    clustered = clustered,
+#    k = 47,
+#    residences = residences,
+#    offset = 3,
+#    piecex = 1
+#    )

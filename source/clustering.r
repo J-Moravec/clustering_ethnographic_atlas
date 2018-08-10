@@ -51,32 +51,3 @@ clusters_res_freq_table = function(clusters, residences){
     res_freq_mat = do.call(rbind, res_freq)
     return(res_freq_mat)
     }
-
-
-
-purity_max_mean = function(x){
-    mean(sapply(x, max))
-    }
-
-
-purity_max_threshold = function(x, threshold=0.9){
-    sum(sapply(x, max) > threshold)
-    }
-
-purity_entropy_sum = function(x){
-    sum(sapply(x, entropy, unit="log2"))
-    }
-
-
-overall_purity = function(clustered, residences, k_max, funct_purity=purity_max_mean, ...){
-    k_max = min(length(clustered$labels), k_max)
-    purity = vector(mode="numeric", length=k_max)
-    for(k in 1:k_max){
-        clusters = get_clusters(clustered, k)
-        res_freq = clusters_res_freq(clusters, residences)
-        purity[k] = funct_purity(res_freq, ...)
-        cat(k, "/", k_max, "\r", sep="")
-        }
-    cat("\n", sep="")
-    return(purity)
-    }
