@@ -1,5 +1,5 @@
 # 1267 societies and 156 variables
-
+#
 # For more details on variables, see: selection.txt
 #
 # There are these basic categories:
@@ -24,6 +24,7 @@
 # and useless category for various reasons: v89, v93, v107
 #
 
+library("magrittr")
 
 
 ################################################################################
@@ -51,6 +52,21 @@ modify_slavery = function(EA){
     new_v71[EA$v70 != 1 & EA$v71 == 1] = 3
     EA$v71 = new_v71
     return(EA)
+    }
+
+
+gini_simpson = function(freq){
+    rel_freq = freq / sum(freq)
+    1 - sum(rel_freq^2)
+    }
+
+gini_simpson_normalized = function(freq){
+    gini_simpson(freq) / (1 - 1/length(freq))
+    }
+
+
+ncat = function(EA){
+    sapply(EA, table) %>% unlist %>% length
     }
 
 # list of classes with column names:
@@ -96,12 +112,31 @@ classes_choice = c(
     "societal_rigidity"
     )
 
-filter = function(EA){
+ordinal = c(1:5, 28, 30, 31:34, 36, 41, 71)
+ordinal = paste0("v", ordinal)
+
+# bad underperforming variables with either low diversity or high amount of NA values.
+# See filering.r in the main directory.
+bad_variables = c("v20", "v22", "v61", "v62", "v64", "v65", "v67", "v69", "v18", "v56", "v58", "v59", "v60", "v63", "v113")
+
+# variable 0 is actually NA ("not coded or insufficient information")
+# in following variables:
+wrong_na = c("v34","v81","v86","v90","v94","v95","v96")
+filter_wrong_na = function(fEA){
+    fEA[wrong_na][fEA[wrong_na] == 0] = NA
+    fEA
+    }
+
+filter = function(EA, filter_bad=FALSE){
     chosen_variables = ea_classes[classes_choice] %>% unlist    
     # remove PMR (v10--v14)
     PMR = paste0("v", 10:14)
     chosen_variables = chosen_variables[!chosen_variables %in% PMR]
     fEA = EA[, chosen_variables]
     rownames(fEA) = EA$society
+    fEA = filter_wrong_na(fEA)
+    if(filter_bad){
+        fEA = fEA[!colnames(fEA) %in% bad_variables]
+        }
     return(fEA)
     }

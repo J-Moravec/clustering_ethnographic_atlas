@@ -39,6 +39,7 @@ penalization = function(purity, a, b, n){
 # purity$plot_penalized
 # plots series of penalization of purity vector
 plot_penalized = function(purity, name, a=c(2, 1, 1/2, 1/4), b=1, n){
+    purities = list()
     for(i in a){
         filename = paste0(
             name, "_", format(i, digits=4), ".png"
@@ -46,7 +47,10 @@ plot_penalized = function(purity, name, a=c(2, 1, 1/2, 1/4), b=1, n){
         filepath = file.path("figures", filename)
         penalized = purity + penalization(purity, i, b, n)
         plot_purity(penalized, filepath)
+        purities = c(purities, list(penalized) )
         }
+    names(purities) = as.character(a)
+    purities
     }
 
 
@@ -85,17 +89,12 @@ purity_gini = function(x, sizes){
     }
 
 
-get_sizes = function(clusters){
-    sapply(clusters, length)
-    }
-
-
 overall_purity = function(clustered, residences, k_max, funct_purity=purity_max_mean, ...){
     k_max = min(length(clustered$labels), k_max)
     purity = vector(mode="numeric", length=k_max)
     for(k in 1:k_max){
         clusters = clustering$get_clusters(clustered, k)
-        sizes = get_sizes(clusters)
+        sizes = clustering$get_sizes(clusters)
         res_freq = clustering$clusters_res_freq(clusters, residences)
         purity[k] = funct_purity(res_freq, sizes, ...)
         cat(k, "/", k_max, "\r", sep="")

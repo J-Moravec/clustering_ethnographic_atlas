@@ -59,7 +59,7 @@ purity_max_mean = purity$overall_purity(
     clustered, residences, kmax, funct_purity=purity$purity_max_mean
     )
 purity$plot_purity(purity_max_mean, "figures/purity_max_mean.png")
-purity$plot_penalized(
+purity_max_mean_penalized = purity$plot_penalized(
     purity_max_mean, "purity_max_mean_pen", b=-1, n=n_societies
     )
 
@@ -71,7 +71,7 @@ purity_max_threshold = purity$overall_purity(
     clustered, residences, kmax, funct_purity=purity$purity_max_threshold
     )
 purity$plot_purity(purity_max_threshold, "figures/purity_max_threshold.png")
-purity$plot_penalized(
+purity_max_threshold_penalized = purity$plot_penalized(
     purity_max_threshold, "purity_max_threshold_pen", b=-1, n=n_societies
     )
 
@@ -86,7 +86,7 @@ purity_entropy = purity$overall_purity(
     clustered, residences, kmax, funct_purity=purity$purity_entropy
     )
 purity$plot_purity(purity_entropy, "figures/purity_entropy.png")
-purity$plot_penalized(
+purity_entropy_penalized = purity$plot_penalized(
     purity_entropy, "purity_entropy_pen", b=entropy_max, n=n_societies
     )
 
@@ -102,46 +102,33 @@ purity_gini = purity$overall_purity(
     clustered, residences, kmax, funct_purity=purity$purity_gini
     )
 purity$plot_purity(purity_gini, "figures/purity_gini.png")
-purity$plot_penalized(
+purity_gini_penalized = purity$plot_penalized(
     purity_gini, "purity_gini_pen", b=gini_max, n=n_societies
     )
 
 
-#plotting$plot_png(
-#    filename = "tree_k2.png",
-#    width = 1024,
-#    height = 1024,
-#    plot_fun = plotting$plot_collapsed,
-#    # arguments for plot_collapsed
-#    clustered = clustered,
-#    k = 2,
-#    residences = residences,
-#    offset = 5
-#    )
+plotting$plot_png(
+    filename = "tree_k19.png",
+    width = 1024,
+    height = 1024,
+    plot_fun = plotting$plot_collapsed,
+    # arguments for plot_collapsed
+    clustered = clustered,
+    k = 19,
+    residences = residences,
+    offset = 5
+    )
 
 
-#plotting$plot_png(
-#    filename = "tree_k15.png",
-#    width = 1024,
-#    height = 1024,
-#    plot_fun = plotting$plot_collapsed,
-#    # arguments for plot_collapsed
-#    clustered = clustered,
-#    k = 15,
-#    residences = residences,
-#    offset = 5
-#    )
+plotting$plot_png(
+    filename = "tree_k24.png",
+    width = 1024,
+    height = 1024,
+    plot_fun = plotting$plot_collapsed,
+    # arguments for plot_collapsed
+    clustered = clustered,
+    k = 24,
+    residences = residences,
+    offset = 5
+    )
 
-
-#plotting$plot_png(
-#    filename = "tree_k47.png",
-#    width = 1024,
-#    height = 1024,
-#    plot_fun = plotting$plot_collapsed,
-#    # arguments for plot_collapsed
-#    clustered = clustered,
-#    k = 47,
-#    residences = residences,
-#    offset = 3,
-#    piecex = 1
-#    )

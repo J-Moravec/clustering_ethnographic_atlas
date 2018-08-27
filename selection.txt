@@ -88,7 +88,7 @@ partially related to v1-v5
 
 v30: Settlement Patterns -- c, possibly o
 v31: Mean Size of Local Communities -- o
-v32: Jurisdictional Hierarchy of Local Community -- c, possibly o if ordered differently?
+v32: Jurisdictional Hierarchy of Local Community -- o
 v33: Jurisdictional Hierarchy Beyond Local Community -- o
 v34: High Gods -- c, possibly o
 v35: Games -- c, but there are subcategories...
@@ -281,7 +281,7 @@ v114: Ethnographic Atlas Cluster number -- useless
 -- Descent:
 -----------------------------------------------------------
     v17: Largest Patrilineal Kin Group -- c
-    v18: Largest Patrilineal Exogamous Group (If Different from Variable v17)
+    v18: Largest Patrilineal Exogamous Group (If Different from Variable v17) -- c
     v19: Largest Matrilineal Kin Group -- c
     v20: Largest Matrilineal Exogamous Group (If Different from Variable v19) -- c
     v21: Largest Matrilineal Kin Group -- c
