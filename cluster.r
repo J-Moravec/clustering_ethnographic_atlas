@@ -14,121 +14,73 @@ residence = module("source/residence.r")
 
 purity = module("source/purity.r")
 
+utils = module("source/utils.r")
 
 # Ethnographic atlas is in variable EA
-
 load("data/EA.Rdata")
-
 
 # modify slavery variable
 EA = filtering$modify_slavery(EA)
-
 # filter EA
-fEA = filtering$filter(EA)
+fEA = filtering$filter(EA, filter_bad=TRUE)
 
 similarity_matrix = similarity$similarity_matrix(fEA)
 distance_matrix = 1 - similarity_matrix
 
-# clustering
-clustered = clustering$cluster(distance_matrix)
+# various clustering methods:
+methods = c("single", "complete", "average", "median", "ward.D", "ward.D2")
 
-# Plotting:
+# We will test all these methods.
+# First, we need to identify the number of clusters according to purity.
+# This cannot be done automatically, since we don't know what is the ideal
+# penalization for number of clusters.
+
 residences = residence$get_residences(EA)
-plotting$plot_png(
-    filename = "figures/cluster.png",
-    width = 1024,
-    height = 10240,
-    plot_fun = plotting$plot_tree,
-    # arguments for plot_tree:
-    clustered = clustered,
-    residences = residences
-    )
+n_societies = nrow(fEA) # total number of societies
+kmax = 300 # maximum number of clusters that will be explored.
+a = c(2, 1, 1/2, 1/4) # different values for penalization coeficient
+cluster_results = list()
+tree_results = list()
+# so I can distinguish non-MCA and MCA
+path = "cluster"
 
 
+for(method in methods){
+    cat("Processing:", method, "\n")
+    # create folder for outputs, one for images and another for tables:
+    imagepath = file.path("figures", path, method)
+    tablepath = file.path("processed", path, method)
 
-# number of societies in total:
-n_societies = nrow(fEA)
+    utils$mkdir(imagepath)
+    utils$mkdir(tablepath)
 
-# how many clusters should be taken at maximum
-kmax = 300
+    # cluster according to chosen method
+    clustered = clustering$cluster(distance_matrix, method=method)
+    tree_results[[method]] = clustered
+    # plot the whole clustered EA, note the large dimension of image:
+    plotting$plot_png(
+        filename = file.path(imagepath, "cluster.png"),
+        width = 1024,
+        height = 10240,
+        plot_fun = plotting$plot_tree,
+        # arguments for plot_tree:
+        clustered = clustered,
+        residences = residences
+        )
 
-# purity_max_mean
-# range: 0 to 1
-# maximum is best
-purity_max_mean = purity$overall_purity(
-    clustered, residences, kmax, funct_purity=purity$purity_max_mean
-    )
-purity$plot_purity(purity_max_mean, "figures/purity_max_mean.png")
-purity_max_mean_penalized = purity$plot_penalized(
-    purity_max_mean, "purity_max_mean_pen", b=-1, n=n_societies
-    )
-
-
-# purity_max_threshold
-# range: 0 to 1
-# maximum is best
-purity_max_threshold = purity$overall_purity(
-    clustered, residences, kmax, funct_purity=purity$purity_max_threshold
-    )
-purity$plot_purity(purity_max_threshold, "figures/purity_max_threshold.png")
-purity_max_threshold_penalized = purity$plot_penalized(
-    purity_max_threshold, "purity_max_threshold_pen", b=-1, n=n_societies
-    )
-
-# purity_entropy
-# range: 0 to 2.321928
-# range: 0 to -log2(1/m)
-# m = 5 (4 residences + NA)
-# minimum is best
-m = length(unique(residences))
-entropy_max = -log2(1/m)
-purity_entropy = purity$overall_purity(
-    clustered, residences, kmax, funct_purity=purity$purity_entropy
-    )
-purity$plot_purity(purity_entropy, "figures/purity_entropy.png")
-purity_entropy_penalized = purity$plot_penalized(
-    purity_entropy, "purity_entropy_pen", b=entropy_max, n=n_societies
-    )
+    # process all purity methods:
+    # originally, each of them were done manually
+    # but this save a lot of writing
+    cluster_results[[method]] = purity$purity_process_methods(
+        clustered,
+        residences,
+        imagepath,
+        tablepath,
+        kmax,
+        a
+        )
+    }
 
 
-# purity_gini (gini-simpson)
-# range: 0 to 4/5
-# range: 0 to 1-1/m
-# m = 5 (4 residences + NA
-# minimum is best
-m = length(unique(residences))
-gini_max = 1-1/m
-purity_gini = purity$overall_purity(
-    clustered, residences, kmax, funct_purity=purity$purity_gini
-    )
-purity$plot_purity(purity_gini, "figures/purity_gini.png")
-purity_gini_penalized = purity$plot_penalized(
-    purity_gini, "purity_gini_pen", b=gini_max, n=n_societies
-    )
-
-
-plotting$plot_png(
-    filename = "tree_k19.png",
-    width = 1024,
-    height = 1024,
-    plot_fun = plotting$plot_collapsed,
-    # arguments for plot_collapsed
-    clustered = clustered,
-    k = 19,
-    residences = residences,
-    offset = 5
-    )
-
-
-plotting$plot_png(
-    filename = "tree_k24.png",
-    width = 1024,
-    height = 1024,
-    plot_fun = plotting$plot_collapsed,
-    # arguments for plot_collapsed
-    clustered = clustered,
-    k = 24,
-    residences = residences,
-    offset = 5
-    )
-
+# and save the result object for future comparison
+save(cluster_results, tree_results, file="processed/cluster_results.Rdata")

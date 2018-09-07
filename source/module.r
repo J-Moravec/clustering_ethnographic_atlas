@@ -1,4 +1,6 @@
-
+# When two modules load each other... this stops working.
+# When I will have more time, I will try to solve it.
+# Hopefully, there is a way to solve it.
 
 
 .module_init = function(){
@@ -23,3 +25,4 @@ module = function(file){
 
 
 .module_init()
+

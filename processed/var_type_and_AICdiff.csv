@@ -1,0 +1,74 @@
+variable,value,type
+v1,-0.2,subsistence
+v2,-1,subsistence
+v3,-1,subsistence
+v4,-1,subsistence
+v5,-0.6,subsistence
+v6,-1,marriage
+v7,-0.8,marriage
+v8,-1,marriage
+v9,-0.6,marriage
+v15,-1,marriage
+v16,-1,marriage
+v17,-1,descent
+v19,-1,descent
+v21,-0.6,descent
+v23,-1,marriage
+v24,-1,marriage
+v25,-0.8,marriage
+v26,-1,marriage
+v27,-1,descent
+v28,-1,subsistence
+v29,-1,subsistence
+v30,-1,"settlement pattern and size"
+v31,-1,"settlement pattern and size"
+v32,-0.8,"political organization"
+v33,-0.8,"political organization"
+v34,-0.6,"belief and religion"
+v35,-0.2,games
+v36,-0.2,"sex related taboos and traditions"
+v37,0.2,"sex related taboos and traditions"
+v38,-1,"sex related taboos and traditions"
+v40,-1,subsistence
+v41,-1,subsistence
+v42,-1,subsistence
+v43,-1,descent
+v44,-0.6,"sex differences"
+v45,-0.6,"sex differences"
+v46,-0.4,"sex differences"
+v47,-0.2,"sex differences"
+v48,-0.6,"sex differences"
+v49,-0.4,"sex differences"
+v50,-0.2,"sex differences"
+v51,-0.4,"sex differences"
+v52,-0.8,"sex differences"
+v53,-0.6,"sex differences"
+v54,-1,"sex differences"
+v55,-0.6,"age and occupational specialization"
+v57,-1,"age and occupational specialization"
+v66,-1,"class stratification and slavery"
+v68,-1,"class stratification and slavery"
+v70,-1,"class stratification and slavery"
+v71,-0.4,"class stratification and slavery"
+v72,-1,"political organization"
+v73,-1,"political organization"
+v74,-1,"inheritance of property"
+v75,-1,"inheritance of property"
+v76,-1,"inheritance of property"
+v77,-1,"inheritance of property"
+v78,-0.6,"sex related taboos and traditions"
+v79,-1,housing
+v80,-0.8,housing
+v81,-1,housing
+v82,-1,housing
+v83,-0.8,housing
+v84,0.2,housing
+v85,-0.2,housing
+v86,-0.2,housing
+v87,0.2,housing
+v88,-0.2,housing
+v90,-0.2,"political organization"
+v94,-0.2,"political organization"
+v95,-0.2,climate
+v96,1,climate
+v112,-0.2,"belief and religion"

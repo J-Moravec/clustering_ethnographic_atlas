@@ -85,3 +85,7 @@ for(i in 1:maxdim){
             }
         }
     }
+
+# now, save the results as R object so we can work with it:
+mca_res = result$objscores
+save(mca_res, file="processed/mca_result.Rdata")
