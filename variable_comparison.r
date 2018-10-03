@@ -56,11 +56,20 @@ var_comparison_wardd2_6 = function(){
     }
 
 var_comparison = var_comparison_wardd2_6()
-comparison$variable_comparison_table(var_comparison)
+var_comparison_colored = comparison$color_cells(var_comparison)
 variable_cats = comparison$unlist_categories(filtering$ea_classes)
 rownames(variable_cats) = variable_cats[,2]
 variable_cats = variable_cats[,1]
 variable_cats = variable_cats[rownames(var_comparison)]
+var_comparison_colored = cbind("category" = variable_cats, var_comparison_colored)
+    write.table(var_comparison_colored,
+        file="processed/variable_comparison.tex",
+        quote = FALSE,
+        row.names = TRUE,
+        col.names = TRUE,
+        sep = " & ",
+        eol = "\\\\\n"
+        )
 
 types = unique(variable_cats)
 res = list()

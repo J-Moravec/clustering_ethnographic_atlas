@@ -13,36 +13,35 @@
     \centering
     \begin{tabular}{llrrrrr}
     \toprule
-    \multirow{2}{*}[-2pt]{clustering method} & \multirow{2}{*}[-2pt]{purity method} & \multicolumn{5}{c}{penalization}\\ \cmidrule(l){3-7}
+    \multirow{2}{*}[-2pt]{Clustering method} & \multirow{2}{*}[-2pt]{Purity method} & \multicolumn{5}{c}{Penalization}\\ \cmidrule(l){3-7}
     & & 0 & 0.25 & 0.5 & 1 & 2 \\ \midrule
-    single & max & 299 & 88 & 3 & 1 & 1\\
-     & threshold & 300 & 300 & 300 & 298 & 1\\
-     & entropy & 300 & 97 & 18 & 2 & 1\\
-     & gini-simpson & 300 & 299 & 125 & 3 & 1\\[1em]
-    complete & max & 299 & 103 & 4 & 1 & 1\\
-     & threshold & 299 & 299 & 297 & 223 & 1\\
-     & entropy & 300 & 300 & 90 & 2 & 1\\
-     & gini-simpson & 300 & 300 & 299 & 13 & 1\\[1em]
-    average & max & 290 & 98 & 4 & 1 & 1\\
-     & threshold & 298 & 298 & 294 & 294 & 1\\
-     & entropy & 300 & 270 & 18 & 2 & 1\\
-     & gini-simpson & 300 & 295 & 270 & 2 & 1\\[1em]
-    median & max & 290 & 175 & 3 & 1 & 1\\
-     & threshold & 300 & 300 & 300 & 265 & 1\\
-     & entropy & 300 & 175 & 3 & 2 & 1\\
-     & gini-simpson & 300 & 290 & 175 & 3 & 1\\[1em]
-    ward.D & max & 296 & 283 & 139 & 1 & 1\\
-     & threshold & 292 & 292 & 292 & 262 & 19\\
-     & entropy & 298 & 296 & 139 & 48 & 5\\
-     & gini-simpson & 298 & 297 & 296 & 139 & 46\\[1em]
-    ward.D2 & max & 278 & 278 & 7 & 1 & 1\\
-     & threshold & 296 & 296 & 296 & 296 & 118\\
-     & entropy & 300 & 287 & 164 & 5 & 1\\
-     & gini-simpson & 300 & 287 & 287 & 147 & 1\\
+    Single & Max & 299 & 88 & 3 & 1 & 1\\
+     & Threshold & 300 & 300 & 300 & 298 & 1\\
+     & Entropy & 300 & 97 & 18 & 2 & 1\\
+     & Gini-Simpson & 300 & 299 & 125 & 3 & 1\\[1em]
+    Complete & Max & 299 & 103 & 4 & 1 & 1\\
+     & Threshold & 299 & 299 & 297 & 223 & 1\\
+     & Entropy & 300 & 300 & 90 & 2 & 1\\
+     & Gini-Simpson & 300 & 300 & 299 & 13 & 1\\[1em]
+    Average & Max & 290 & 98 & 4 & 1 & 1\\
+     & Threshold & 298 & 298 & 294 & 294 & 1\\
+     & Entropy & 300 & 270 & 18 & 2 & 1\\
+     & Gini-Simpson & 300 & 295 & 270 & 2 & 1\\[1em]
+    Median & Max & 290 & 175 & 3 & 1 & 1\\
+     & Threshold & 300 & 300 & 300 & 265 & 1\\
+     & Entropy & 300 & 175 & 3 & 2 & 1\\
+     & Gini-Simpson & 300 & 290 & 175 & 3 & 1\\[1em]
+    Ward & Max & 296 & 283 & 139 & 1 & 1\\
+     & Threshold & 292 & 292 & 292 & 262 & 19\\
+     & Entropy & 298 & 296 & 139 & 48 & 5\\
+     & Gini-Simpson & 298 & 297 & 296 & 139 & 46\\[1em]
+    Ward$^2$ & Max & 278 & 278 & 7 & 1 & 1\\
+     & Threshold & 296 & 296 & 296 & 296 & 118\\
+     & Entropy & 300 & 287 & 164 & 5 & 1\\
+     & Gini-Simpson & 300 & 287 & 287 & 147 & 1\\
   \bottomrule
     \end{tabular}
-    \caption{Comparison of number of optimal clusters for MCA data found by 6 clustering (single/minimal, complete/maximal, average and median linkage and two implementations of Ward method) and 4 purity methods (maximum, threshold, entropy and gini-simpson index). Unlike with the non-transformed variables, there is an apparent lack of cluster stability, at least for a number of cluster in single and double digits. All the stable number of optimal clusters (either discovered by more than one purity method or stable accross different penalizations of single method) are close to the tested maximum of 300 clusters and the only semi-succesfull methods seems to be the median linkage with 175 clusters and ward.D method with 139 clusters.}
-%    \caption{Comparison of number of optimal clusters found by 6 clustering (single/minimal, complete/maximal, average and median linkage and two implementations of Ward method) and 4 purity methods (maximum, threshold, entropy and gini-simpson index). The repeated optimal number of clusters for different penalizations of purity suggest that the purity surface is stable with significant peak. The single/minimal linkage method seems to fail in finding a reasonable optimal number of clusters and while median seems to extract a three clusters, closer inspection of purity curves shows only a small peak and otherwise a similar monotone surface as the single linkage method.}
+    \caption{Comparison of number of optimal clusters for MCA data found by 6 clustering (single/minimal, complete/maximal, average and median linkage and two implementations of Ward method) and 4 purity methods (maximum, threshold, entropy and Gini-Simpson index). Unlike with the non-transformed variables, there is an apparent lack of cluster stability, at least for a number of cluster in single and double digits. All the stable number of optimal clusters (either discovered by more than one purity method or stable accross different penalizations of single method) are close to the tested maximum of 300 clusters and the only semi-succesfull methods seems to be the median linkage with 175 clusters and ward.D method with 139 clusters.}
 \end{table}
 
 \end{document}

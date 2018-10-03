@@ -1,0 +1,30 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[top=22mm, bottom=24mm, left=34mm, right=25mm, headsep=6mm,
+            footskip=8mm, includeheadfoot, headheight=14pt]{geometry}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{makecell}
+\pagestyle{empty}
+\begin{document}
+
+\begin{table}
+    \centering
+    \begin{tabular}{lrrrrrr}
+    \toprule
+    \multirow{2}{*}[-2pt]{\makecell{Clustering\\ criterion}} & \multirow{2}{*}[-2pt]{\makecell{Optimal number\\ of clusters}} & \multicolumn{5}{c}{Penalization}\\ \cmidrule(l){3-7}
+    & & 0 & 0.25 & 0.5 & 1 & 2 \\ \midrule
+    Complete & 4 & 0.76 & 0.76 & 0.76 & 0.76 & 0.75\\
+     & 24 & 0.80 & 0.80 & 0.79 & 0.78 & 0.77\\
+    Average & 8 & 0.79 & 0.79 & 0.79 & 0.79 & 0.78\\
+    Ward & 7 & 0.79 & 0.79 & 0.78 & 0.78 & 0.78\\
+     & 32 & 0.83 & 0.82 & 0.81 & 0.80 & 0.78\\
+    Ward$^2$ & 54 & 0.84 & 0.83 & 0.82 & 0.80 & 0.76\\
+     & 6 & 0.79 & 0.79 & 0.79 & 0.79 & 0.79\\
+    \bottomrule
+    \end{tabular}
+    \caption{Optimal number of clusters and their purity values under the Maximum method for various used clustering methods. The average linkage criterion and both implementations of Ward method seems to be the most successful in separating clusters according to their residences.}
+\end{table}
+
+\end{document}

@@ -79,11 +79,14 @@ plot_tree = function(clustered, residences){
     }
 
 
-.plot_phylo_collapsed = function(x, do_plot=FALSE, offset=0, show=FALSE, xlim=NULL, ylim=NULL){
+.plot_phylo_collapsed = function(
+    x, do_plot=FALSE, offset=0, show=FALSE, xlim=NULL, ylim=NULL,
+    edge_width = 3    
+    ){
     plot.phylo(
         x,
-        edge.width = 3,
-        edge.color = "grey",
+        edge.width = edge_width,
+        edge.color = "darkgrey",
         font = 1,
         plot = do_plot,
         no.margin = TRUE,
@@ -97,7 +100,10 @@ plot_tree = function(clustered, residences){
     }
 
 
-plot_collapsed = function(clustered, k, residences, offset=2.5, piecex=2){
+plot_collapsed = function(
+    clustered, k, residences, offset=2.5, piecex=2,
+    edge_width=3, show_label=TRUE, x_min = 0){
+    # prepare data
     clusters = clustering$get_clusters(clustered, k)
     res_freq_table = clustering$clusters_res_freq_table(clusters, residences)
     collapsed_tree = clustering$collapse_tree(clustered, clusters)
@@ -113,7 +119,7 @@ plot_collapsed = function(clustered, k, residences, offset=2.5, piecex=2){
     current_ylim = c(par("usr")[3:4])
     new_xlim = max_label_width + current_xlim + .offset
     new_ylim = current_ylim + c(-1,1)*strwidth("m") * 4
-    .plot_phylo_collapsed(collapsed_tree, TRUE, .offset, show=TRUE, xlim=new_xlim, ylim=new_ylim)
+    .plot_phylo_collapsed(collapsed_tree, TRUE, .offset, show=show_label, xlim=c(x_min, new_xlim), ylim=new_ylim, edge_width = edge_width)
     tiplabels(pie=res_freq_table, piecol=res_freq_colors, cex=piecex)
     tiplabels(text=sizes, frame="none", col="white", font=2, cex=piecex*0.8)
 

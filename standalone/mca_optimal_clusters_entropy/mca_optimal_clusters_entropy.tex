@@ -10,15 +10,16 @@
 \begin{document}
 
 \begin{table}
+    \centering
     \begin{tabular}{lrrrrrr}
     \toprule
-    \multirow{2}{*}[-2pt]{\makecell{clustering\\ method}} & \multirow{2}{*}[-2pt]{\makecell{optimal number\\ of clusters}} & \multicolumn{5}{c}{penalization}\\ \cmidrule(l){3-7}
+    \multirow{2}{*}[-2pt]{\makecell{Clustering\\ method}} & \multirow{2}{*}[-2pt]{\makecell{Optimal number\\ of clusters}} & \multicolumn{5}{c}{Penalization}\\ \cmidrule(l){3-7}
     & & 0 & 0.25 & 0.5 & 1 & 2 \\ \midrule
-    median & 175 & 0.77 & 0.74 & 0.70 & 0.63 & 0.50\\
+    Median & 175 & 0.77 & 0.74 & 0.70 & 0.63 & 0.50\\
     Ward & 139 & 0.83 & 0.80 & 0.77 & 0.72 & 0.61\\
     \bottomrule
     \end{tabular}
-    \caption{Optimal number of clusters and their purity values under the normalized entropy method for various used clustering methods. The complete linkage method and both implementations of ward D method seems to be the most successful in separating clusters according to their residences.}
+    \caption{Optimal number of clusters and their purity values under the normalized Entropy method for used clustering criteria. Performed on the transformed values from MCA.}
 \end{table}
 
 \end{document}

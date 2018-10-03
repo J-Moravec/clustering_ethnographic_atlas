@@ -111,19 +111,12 @@ binarize_matrix = function(mat){
     }
 
 
-variable_comparison_table = function(tab){
+color_cells = function(tab){
     table = tab
     table[tab == -1] = "\\cellcolor{myred} -"
     table[tab == 0 ] = 0
     table[tab == 1 ] = "\\cellcolor{myblue} +"
-    write.table(table,
-        file="processed/var_comparison_ward_d2k6.tex",
-        quote = FALSE,
-        row.names = TRUE,
-        col.names = TRUE,
-        sep = " & ",
-        eol = "\\\\\n"
-        )
+    table
     }
 
 

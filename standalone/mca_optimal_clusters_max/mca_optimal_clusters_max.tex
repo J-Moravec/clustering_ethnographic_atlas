@@ -1,0 +1,25 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[top=22mm, bottom=24mm, left=34mm, right=25mm, headsep=6mm,
+            footskip=8mm, includeheadfoot, headheight=14pt]{geometry}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{makecell}
+\pagestyle{empty}
+\begin{document}
+
+\begin{table}
+    \centering
+    \begin{tabular}{lrrrrrr}
+    \toprule
+    \multirow{2}{*}[-2pt]{\makecell{Clustering\\ method}} & \multirow{2}{*}[-2pt]{\makecell{Optimal number\\ of clusters}} & \multicolumn{5}{c}{Penalization}\\ \cmidrule(l){3-7}
+    & & 0 & 0.25 & 0.5 & 1 & 2 \\ \midrule
+    Median & 175 & 0.77 & 0.74 & 0.70 & 0.63 & 0.50\\
+    Ward & 139 & 0.83 & 0.80 & 0.77 & 0.72 & 0.61\\
+    \bottomrule
+    \end{tabular}
+    \caption{Optimal number of clusters and their purity values under the Maximum method for used clustering criteria. Performed on the transformed values from MCA.}
+\end{table}
+
+\end{document}

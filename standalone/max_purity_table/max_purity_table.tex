@@ -13,32 +13,32 @@
     \centering
     \begin{tabular}{llrrrrr}
     \toprule
-    \multirow{2}{*}[-2pt]{clustering method} & \multirow{2}{*}[-2pt]{purity method} & \multicolumn{5}{c}{penalization}\\ \cmidrule(l){3-7}
+    \multirow{2}{*}[-2pt]{Clustering method} & \multirow{2}{*}[-2pt]{Purity method} & \multicolumn{5}{c}{Penalization}\\ \cmidrule(l){3-7}
     & & 0 & 0.25 & 0.5 & 1 & 2 \\ \midrule
-    single & max & 300 & 293 & 1 & 1 & 1\\
-     & threshold & 300 & 300 & 300 & 289 & 1\\
-     & entropy & 300 & 293 & 1 & 1 & 1\\
-     & gini-simpson & 300 & 300 & 293 & 1 & 1\\[1em]
-    complete & max & 284 & 255 & 22 & 4 & 4\\
-     & threshold & 300 & 300 & 24 & 24 & 24\\
-     & entropy & 300 & 197 & 81 & 34 & 10\\
-     & gini-simpson & 300 & 298 & 197 & 64 & 16\\[1em]
-    average & max & 296 & 230 & 45 & 8 & 8\\
-     & threshold & 264 & 264 & 136 & 8 & 8\\
-     & entropy & 300 & 291 & 85 & 8 & 8\\
-     & gini-simpson & 300 & 296 & 291 & 56 & 8\\[1em]
-    median & max & 289 & 201 & 3 & 1 & 1\\
-     & threshold & 300 & 300 & 254 & 254 & 1\\
-     & entropy & 300 & 264 & 3 & 1 & 1\\
-     & gini-simpson & 300 & 264 & 243 & 3 & 1\\[1em]
-    ward.D & max & 292 & 100 & 64 & 32 & 12\\
-     & threshold & 300 & 72 & 72 & 7 & 7\\
-     & entropy & 300 & 177 & 100 & 32 & 10\\
-     & gini-simpson & 300 & 292 & 177 & 64 & 32\\[1em]
-    ward.D2 & max & 283 & 241 & 54 & 54 & 6\\
-     & threshold & 300 & 289 & 71 & 6 & 6\\
-     & entropy & 300 & 241 & 84 & 38 & 11\\
-     & gini-simpson & 300 & 262 & 241 & 50 & 22\\
+    Single & Max & 300 & 293 & 1 & 1 & 1\\
+     & Threshold & 300 & 300 & 300 & 289 & 1\\
+     & Entropy & 300 & 293 & 1 & 1 & 1\\
+     & Gini-Simpson & 300 & 300 & 293 & 1 & 1\\[1em]
+    Complete & Max & 284 & 255 & 22 & 4 & 4\\
+     & Threshold & 300 & 300 & 24 & 24 & 24\\
+     & Entropy & 300 & 197 & 81 & 34 & 10\\
+     & Gini-Simpson & 300 & 298 & 197 & 64 & 16\\[1em]
+    Average & max & 296 & 230 & 45 & 8 & 8\\
+     & Threshold & 264 & 264 & 136 & 8 & 8\\
+     & Entropy & 300 & 291 & 85 & 8 & 8\\
+     & Gini-Simpson & 300 & 296 & 291 & 56 & 8\\[1em]
+    Median & Max & 289 & 201 & 3 & 1 & 1\\
+     & Threshold & 300 & 300 & 254 & 254 & 1\\
+     & Entropy & 300 & 264 & 3 & 1 & 1\\
+     & Gini-Simpson & 300 & 264 & 243 & 3 & 1\\[1em]
+    Ward & Max & 292 & 100 & 64 & 32 & 12\\
+     & Threshold & 300 & 72 & 72 & 7 & 7\\
+     & Entropy & 300 & 177 & 100 & 32 & 10\\
+     & Gini-Simpson & 300 & 292 & 177 & 64 & 32\\[1em]
+    Ward$^2$ & Max & 283 & 241 & 54 & 54 & 6\\
+     & Threshold & 300 & 289 & 71 & 6 & 6\\
+     & Entropy & 300 & 241 & 84 & 38 & 11\\
+     & Gini-Simpson & 300 & 262 & 241 & 50 & 22\\
     \bottomrule
     \end{tabular}
     \caption{Comparison of number of optimal clusters found by 6 clustering (single/minimal, complete/maximal, average and median linkage and two implementations of Ward method) and 4 purity methods (maximum, threshold, entropy and gini-simpson index). The repeated optimal number of clusters for different penalizations of purity suggest that the purity surface is stable with significant peak. The single/minimal linkage method seems to fail in finding a reasonable optimal number of clusters and while median seems to extract a three clusters, closer inspection of purity curves shows only a small peak and otherwise a similar monotone surface as the single linkage method.}
