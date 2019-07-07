@@ -39,7 +39,7 @@ cluster_res_freq = function(cluster, residences, na.rm=TRUE){
     # This stabilizes entropy and other purity values
     #
     # For tree however, "NA" is turned into text and evaluated as a separate state
-    if(na.rm!=TRUE){
+    if(!na.rm){
         residences[is.na(residences)] = "NA"
         }
 

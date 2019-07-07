@@ -23,9 +23,12 @@ main = function(input, summary, figures, output){
     # for each variable:
     summary_variables = summary_variables(EA)
     bad_variables = bad_variables(summary_variables)
+    filtered_dataset = filter_bad(EA, bad_variables)
+    summary_filtered_dataset = summary_dataset(filtered_dataset)
     if(!is.na(summary)){
         write_summary(
             dataset = summary_dataset,
+            filtered_dataset = summary_filtered_dataset,
             variables = summary_variables,
             bad = bad_variables,
             file = summary
@@ -38,8 +41,7 @@ main = function(input, summary, figures, output){
 
 
     if(!is.na(output)){
-        EA = filter_bad(EA, bad_variables)
-        saveRDS(EA, output)
+        saveRDS(filtered_dataset, output)
         }
     }
 
@@ -106,7 +108,7 @@ summary_variables = function(EA){
     }
 
 
-write_summary = function(dataset, variables, bad, file){
+write_summary = function(dataset, filtered_dataset, variables, bad, file){
     text = paste0(
         "Summary of Ethnographic Atlas:\n",
         " -- societies: ", dataset$dimension[1], "\n",
@@ -124,7 +126,13 @@ write_summary = function(dataset, variables, bad, file){
         "Underperforming Variables:\n",
         " -- total: ", length(bad$all), "\n",
         " -- list:\n",
-        collapse(bad$all), "\n"
+        collapse(bad$all), "\n",
+        "\n",
+        "After filtering, there will be:\n",
+        " -- societies: ", filtered_dataset$dimension[1], "\n",
+        " -- variables: ", filtered_dataset$dimension[2], "\n",
+        " -- categories total: ", filtered_dataset$categories, "\n",
+        " -- uknown data: ", filtered_dataset$unknown, "%\n"
         )
     cat(text, file=file)
     }

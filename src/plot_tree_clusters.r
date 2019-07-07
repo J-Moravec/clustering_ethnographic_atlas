@@ -78,7 +78,7 @@ main = function(clustered, residences, method, k, output){
             clustered = clustered[[method]],
             k = k,
             residences = residences,
-            offset = 5
+            offset = 2
             )
     }
 

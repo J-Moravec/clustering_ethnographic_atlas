@@ -1,8 +1,8 @@
 Summary of Ethnographic Atlas:
  -- societies: 1291
- -- variables: 92
- -- categories total: 609
- -- uknown data: 0.259000437813626%
+ -- variables: 87
+ -- categories total: 565
+ -- uknown data: 0.272817115841769%
 
 Underperforming Variables:
  -- small diversity (< 0.1):
@@ -15,3 +15,9 @@ Underperforming Variables:
  -- total: 5
  -- list:
 v113, v22, v60, v67, v69
+
+After filtering, there will be:
+ -- societies: 1291
+ -- variables: 82
+ -- categories total: 549
+ -- uknown data: 0.267187470480437%

@@ -18,15 +18,17 @@ MCA = results/mca
 CMCA = results/cluster_mca
 CPURITY = results/purity_mca
 COPTIMAL = results/optimal_mca
+VARS = results/variables
 
 DIRS = $(PHONY) $(INTER) $(RESULT) $(EXPLORE) \
     $(CLUSTER) $(PURITY) $(OPTIMAL) \
-    $(MCA) $(CMCA) $(CPURITY) $(COPTIMAL)
+    $(MCA) $(CMCA) $(CPURITY) $(COPTIMAL) \
+    $(VARS)
 
 # targets:
-all: explore cluster mca evaluate evaluate_mca compare compare_mca
+all: explore cluster mca evaluate evaluate_mca compare compare_mca compare_variables
 
-.PHONY: explore cluster mca clean evaluate compare compare_mca evaluate_mca
+.PHONY: explore cluster mca clean evaluate compare compare_mca evaluate_mca compare_variables
 
 $(DIRS):
 + mkdir -p $@
@@ -95,6 +97,32 @@ $(INTER)/optimal_clusters_mca.json: $(INTER)/purity_mca.rds $(INTER)/clustered_m
     $(DATA)/residences.txt | $(COPTIMAL)
 + Rscript $(SRC)/optimal_clusters.r $(INTER)/purity_mca.rds $(INTER)/clustered_mca.rds $@ \
     --tables $(COPTIMAL)/tables --figures $(COPTIMAL)/figures --residences $(DATA)/residences.txt
+
+
+compare_variables: $(VARS)/count_table_k6.tab $(VARS)/count_table_k13.tab \
+                   $(VARS)/cluster_table_k6.tab $(VARS)/cluster_table_k13.tab\
+                 | $(VARS)
+# Ward k6 and k13 seems to be the best:
+
+$(VARS)/count_table_k6.tab: $(INTER)/clustered.rds $(INTER)/fEA.rds | $(VARS)
++ Rscript $(SRC)/compare_variables_tree.r $(INTER)/clustered.rds --method "ward.D" --k 6 \
+    --ea $(INTER)/fEA.rds --count_table $@ --category_table $(VARS)/category_table_k6.tab
+
+$(VARS)/count_table_k13.tab: $(INTER)/clustered.rds $(INTER)/fEA.rds | $(VARS)
++ Rscript $(SRC)/compare_variables_tree.r $(INTER)/clustered.rds --method "ward.D" --k 13 \
+    --ea $(INTER)/fEA.rds --count_table $@ --category_table $(VARS)/category_table_k13.tab
+
+
+$(VARS)/cluster_table_k6.tab: $(INTER)/clustered.rds $(INTER)/fEA.rds | $(VARS)
++ Rscript $(SRC)/compare_variables_clusters.r $(INTER)/clustered.rds --method "ward.D" --k 6 \
+    --ea $(INTER)/fEA.rds --vars v28 v30 v31 v42 --figures $(VARS)/k6 --table $@
+
+
+$(VARS)/cluster_table_k13.tab: $(INTER)/clustered.rds $(INTER)/fEA.rds | $(VARS)
++ Rscript $(SRC)/compare_variables_clusters.r $(INTER)/clustered.rds --method "ward.D" --k 13 \
+    --ea $(INTER)/fEA.rds --vars v28 v30 v31 v42 --figures $(VARS)/k13 --table $@
+
+
 
 clean:
 + rm -rf $(DIRS)

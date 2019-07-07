@@ -14,8 +14,12 @@ plot_collapsed_tree = function(
     edge_width=5, show_label=TRUE, x_min = 0){
     # prepare data
     clusters = get_clusters(clustered, k)
+    # scale letter pie and letter size according to number of clusters
     piecex = 0.1 + 20 / (length(clusters) + 2)
-    tipcex = 0.1 + 50 / (length(clusters) + 2)
+    tipcex = 0.1 + 40 / (length(clusters) + 2)
+    legendcex = 2.5 + 10/(length(clusters) + 2)
+    x_min = -7/(10*length(clusters))
+
     res_freq_table = clusters_res_freq_table(clusters, residences)
     collapsed_tree = collapse_tree(clustered, clusters)
     res_freq_table = res_freq_table[collapsed_tree$tip.label %>% as.numeric,]
@@ -23,13 +27,14 @@ plot_collapsed_tree = function(
     sizes = get_sizes(clusters)
     sizes = sizes[collapsed_tree$tip.label %>% as.numeric]
 
+
     .plot_phylo_collapsed(collapsed_tree, cex=tipcex)
     max_label_width = max(strwidth(collapsed_tree$tip.label))
-    .offset = strwidth("m")*offset
+    .offset = strwidth("m") * tipcex * offset + abs(x_min)*tipcex*0.01
     current_xlim = par("usr")[2]
     current_ylim = c(par("usr")[3:4])
-    new_xlim = max_label_width + current_xlim + .offset
-    new_ylim = current_ylim + c(-1,1)*strwidth("m") * 4
+    new_xlim = max_label_width + current_xlim + .offset*1.5
+    new_ylim = current_ylim + c(-1,1)*strwidth("m")*tipcex
     .plot_phylo_collapsed(collapsed_tree, TRUE, .offset, show=show_label, xlim=c(x_min, new_xlim), ylim=new_ylim, edge_width = edge_width, cex=tipcex)
     par("fg" = NA) # color for piegraphs
     tiplabels(pie=res_freq_table, piecol=res_freq_colors, cex=piecex,)
@@ -38,7 +43,7 @@ plot_collapsed_tree = function(
 
     legend = names(residence_colors)
     legend_colors = residence_colors
-    plot_legend(legend=legend, colors=legend_colors, cex=1.5) 
+    plot_legend(legend=legend, colors=legend_colors, cex=legendcex) 
     }
 
 

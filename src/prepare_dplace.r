@@ -10,6 +10,7 @@ library("magrittr")
 import::from("src/lib/prepare.r", "modify_slavery")
 import::from("src/lib/prepare.r", "select_variables")
 import::from("src/lib/prepare.r", "get_residence")
+import::from("src/lib/prepare.r", "remove_PMR")
 import::from("src/lib/utils.r", "write_named_vector")
 
 
@@ -45,6 +46,7 @@ main = function(input, output, residence){
         } else {
         EA = modify_slavery(EA)
         EA = select_variables(EA)
+        EA = remove_PMR(EA)
         saveRDS(EA, file=output)
         }
      }
