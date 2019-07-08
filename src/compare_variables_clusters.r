@@ -183,6 +183,8 @@ get_maximal_values = function(clusters_freq){
 
 
 get_maximal_value = function(cluster_freq){
+    # remove NA
+    cluster_freq = cluster_freq[names(cluster_freq) != "NA"]
     position = which.max(cluster_freq)
     name = names(cluster_freq)[position]
     value = cluster_freq[position] %>% "*"(., 100) %>% round
